@@ -1,0 +1,20 @@
+version: '3'
+services:
+  # Service 1: Your Website
+  frontend:
+    build: .
+    ports:
+      - "8081:80"
+    depends_on:
+      - database
+
+  # Service 2: The "Database" (Redis)
+  database:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+
+volumes:
+  redis-data:
